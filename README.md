@@ -1,0 +1,1 @@
+# Softonica Frontend
