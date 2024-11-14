@@ -1,0 +1,59 @@
+package com.softonicabackend.domain.user;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDateTime;
+import java.util.Objects;
+
+@Entity(name = "users")
+@Getter
+@Setter
+@NoArgsConstructor
+class UserEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(nullable = false, length = 42, unique = true)
+    private String username;
+    @Column(nullable = false, length = 32)
+    private String password;
+    @Column(nullable = false, length = 128, unique = true)
+    private String email;
+    @Column(nullable = false)
+    private boolean active = true;
+    @Column(nullable = false)
+    private boolean locked = false;
+    @Column(nullable = false)
+    private int failures = 0;
+    private LocalDateTime lastLogon;
+    @Column(insertable = false, updatable = false)
+    private LocalDateTime created;
+    private LocalDateTime deleted;
+
+    public UserEntity(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.created = LocalDateTime.now();
+        this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserEntity that = (UserEntity) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(username, that.username) &&
+                Objects.equals(password, that.password) &&
+                Objects.equals(email, that.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, password, email);
+    }
+}
