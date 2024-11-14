@@ -21,8 +21,8 @@ class UserRegisterService implements UserRegistration {
 
     UserEntity createUserObject(UserRegisterDto userRegisterDto) {
         /*
-    Jak bedizesz dawac Bcrypta to zrob to w infra zeby tam hashowalo haslo
-     */
+             Jak bedizesz dawac Bcrypta to zrob to w infra zeby tam hashowalo haslo
+        */
         return new UserEntity(userRegisterDto.username(),
                 userRegisterDto.email(),
                 userRegisterDto.password());
