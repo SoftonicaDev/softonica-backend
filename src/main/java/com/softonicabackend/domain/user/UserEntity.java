@@ -8,7 +8,8 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-@Entity(name = "users")
+@Entity
+@Table(name = "users")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -34,11 +35,11 @@ class UserEntity {
     private LocalDateTime created;
     private LocalDateTime deleted;
 
-    public UserEntity(String username, String password, String email) {
+    public UserEntity(String username, String email, String password) {
         this.username = username;
+        this.email = email;
         this.password = password;
         this.created = LocalDateTime.now();
-        this.email = email;
     }
 
     @Override
