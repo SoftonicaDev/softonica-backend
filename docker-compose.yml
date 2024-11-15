@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: softonica-backend-app
+    container_name: softonica-backend
     depends_on:
       - mysql-db
     ports:
@@ -14,20 +14,20 @@ services:
     networks:
       - db-network
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/softonica
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/softonica
       SPRING_DATASOURCE_USERNAME: admin
       SPRING_DATASOURCE_PASSWORD: admin
 
   mysql-db:
     image: mysql:8.0
-    container_name: mysql-softonica
+    container_name: softonica
     environment:
       MYSQL_ROOT_PASSWORD: dev
       MYSQL_DATABASE: softonica
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
