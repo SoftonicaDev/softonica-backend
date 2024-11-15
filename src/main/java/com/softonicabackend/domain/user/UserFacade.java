@@ -4,6 +4,8 @@ import com.softonicabackend.domain.user.dto.UserRegisterDto;
 import com.softonicabackend.domain.user.dto.UserRegisterResponseDto;
 import com.softonicabackend.domain.user.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 public class UserFacade {
