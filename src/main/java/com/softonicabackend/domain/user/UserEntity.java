@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -20,7 +21,7 @@ class UserEntity {
     private Long id;
     @Column(nullable = false, length = 42, unique = true)
     private String username;
-    @Column(nullable = false, length = 32)
+    @Column(nullable = false)
     private String password;
     @Column(nullable = false, length = 128, unique = true)
     private String email;
@@ -30,10 +31,11 @@ class UserEntity {
     private boolean locked = false;
     @Column(nullable = false)
     private int failures = 0;
-    private LocalDateTime lastLogon;
     @Column(insertable = false, updatable = false)
     private LocalDateTime created;
     private LocalDateTime deleted;
+    @Column(name = "lastlogon")
+    private Instant lastlogon;
 
     public UserEntity(String username, String email, String password) {
         this.username = username;

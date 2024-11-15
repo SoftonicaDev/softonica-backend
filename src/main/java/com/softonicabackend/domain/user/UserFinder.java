@@ -1,9 +1,9 @@
 package com.softonicabackend.domain.user;
 
+import com.softonicabackend.domain.user.dto.GetLoggedUserDto;
 import com.softonicabackend.domain.user.dto.UserResponseDto;
 
-public interface UserFinder {
+interface UserFinder {
 
-    UserResponseDto getLoggedUser(String username);
-
+    GetLoggedUserDto getLoggedUser(String username);
 }
